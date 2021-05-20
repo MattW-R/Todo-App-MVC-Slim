@@ -1,0 +1,38 @@
+input {
+    border: none;
+    border-bottom: darkcyan solid 2px;
+    font-size: 24px;
+}
+
+input.done {
+    color: lightgray;
+    text-decoration: line-through;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: darkred solid 2px;
+}
+
+input.newtag {
+    border-bottom: goldenrod solid 2px;
+    margin-bottom: 30px;
+}
+
+button {
+    border: goldenrod solid 2px;
+    background-color: transparent;
+}
+
+span {
+    color: gray;
+    margin: 0 5px;
+}
+
+span.active {
+    color: darkcyan;
+}
+
+form {
+    display: inline;
+}
