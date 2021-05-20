@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            input {
+                border: none;
+                border-bottom: darkcyan solid 2px;
+                font-size: 24px;
+            }
+
+            input.done {
+                color: lightgray;
+                text-decoration: line-through;
+            }
+
+            input:focus {
+                outline: none;
+                border-bottom: darkred solid 2px;
+            }
+
+            input.newtag {
+                border-bottom: goldenrod solid 2px;
+                margin-bottom: 30px;
+            }
+
+            button {
+                border: goldenrod solid 2px;
+                background-color: transparent;
+            }
+
+            span {
+                color: gray;
+                margin: 0 5px;
+            }
+
+            span.active {
+                color: darkcyan;
+            }
+
+            form {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post" action="tags/add">
+            <input class="newtag" type="text" name="tag" placeholder="New Tag" />
+            <button>Add New Tag</button>
+        </form>
+        <br>
+        <?php
+            if ($todos) {
+                foreach ($todos as $todo) {
+                    echo '<form method="post" action="edit">';
+                    echo '<input class="todo' . ($todo['done'] == 1 ? ' done' : '') .'" name="todo" type="text" value="' . $todo['todo'] . '" data-current-value="' . $todo['todo'] . '" />';
+                    echo '<input hidden name="id" value="' . $todo['id'] . '" />';
+                    echo '<input hidden name="done" value="' . ($todo['done'] == 1 ? '0' : '1') . '" />';
+                    echo '</form>';
+                    foreach ($tags as $tag) {
+                        $active = false;
+                        foreach (explode(',', $todo['tags']) as $activeTagId) {
+                            if ($tag['id'] == $activeTagId) {
+                                $active = true;
+                                break;
+                            }
+                        }
+                        echo '<form action="edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
+                        echo '<span class="' . ($active ? 'active' : '') . '">' . $tag['name'] . '</span>';
+                        echo '<input hidden name="id" value="' . $todo['id'] . '" />';
+                        echo '<input hidden name="tagId" value="' . $tag['id'] . '" />';
+                        echo '</form>';
+                    }
+                    echo '<br>';
+                }
+            }
+            echo '<form method="post" action="add">';
+            echo '<input class="todo" type="text" name="todo" />';
+            echo '</form>';
+        ?>
+    </body>
+</html>
+<script defer>
+    let todos = document.querySelectorAll('.todo')
+
+    todos.forEach(todo => {
+        todo.addEventListener('blur', e => {
+            if (e.target.value !== '' && e.target.value !== e.target.dataset.currentValue) {
+                e.target.parentElement.submit()
+            }
+        })
+        todo.addEventListener('keyup', e => {
+            if (e.key === 'Enter') {
+                e.target.blur()
+            } else if (e.key === 'Backspace' && e.target.value === '') {
+                e.target.parentElement.action = 'delete'
+                e.target.parentElement.submit()
+            }
+        })
+        todo.addEventListener('click', e => {
+            if (e.shiftKey && e.target.value !== '') {
+                e.target.parentElement.action = 'edit/done'
+                e.target.parentElement.submit()
+            }
+        })
+    })
+
+    document.querySelectorAll('span').forEach(span => {
+        span.addEventListener('click', e => {
+            e.target.parentElement.submit()
+        })
+    })
+
+    todos[todos.length - 1].focus()
+</script>
