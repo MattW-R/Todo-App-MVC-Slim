@@ -40,6 +40,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['TodosModel'] = DI\factory('App\Factories\TodosModelFactory');
     $container['TagsModel'] = DI\factory('App\Factories\TagsModelFactory');
 
+    $container['ViewMainPageController'] = DI\factory('App\Factories\ViewMainPageControllerFactory');
     $container['ViewAllTodosController'] = DI\factory('App\Factories\ViewAllTodosControllerFactory');
     $container['AddTodoController'] = DI\factory('App\Factories\AddTodoControllerFactory');
     $container['EditTodoController'] = DI\factory('App\Factories\EditTodoControllerFactory');
