@@ -8,11 +8,12 @@ return function (App $app) {
     $container = $app->getContainer();
 
     $app->get('/', 'ViewAllTodosController');
-    $app->post('/add', 'AddTodoController');
-    $app->post('/edit', 'EditTodoController');
-    $app->post('/edit/done', 'EditDoneTodoController');
-    $app->post('/edit/addtag', 'TodoAddTagController');
-    $app->post('/edit/removetag', 'TodoRemoveTagController');
-    $app->post('/delete', 'DeleteTodoController');
+    $app->get('/todos', 'ViewAllTodosController');
+    $app->post('/todos/add', 'AddTodoController');
+    $app->post('/todos/edit', 'EditTodoController');
+    $app->post('/todos/edit/done', 'EditDoneTodoController');
+    $app->post('/todos/edit/addtag', 'TodoAddTagController');
+    $app->post('/todos/edit/removetag', 'TodoRemoveTagController');
+    $app->post('/todos/delete', 'DeleteTodoController');
     $app->post('/tags/add', 'AddTagController');
 };

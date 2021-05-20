@@ -51,7 +51,7 @@
         <?php
             if ($todos) {
                 foreach ($todos as $todo) {
-                    echo '<form method="post" action="edit">';
+                    echo '<form method="post" action="todos/edit">';
                     echo '<input class="todo' . ($todo['done'] == 1 ? ' done' : '') .'" name="todo" type="text" value="' . $todo['todo'] . '" data-current-value="' . $todo['todo'] . '" />';
                     echo '<input hidden name="id" value="' . $todo['id'] . '" />';
                     echo '<input hidden name="done" value="' . ($todo['done'] == 1 ? '0' : '1') . '" />';
@@ -64,7 +64,7 @@
                                 break;
                             }
                         }
-                        echo '<form action="edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
+                        echo '<form action="todos/edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
                         echo '<span class="' . ($active ? 'active' : '') . '">' . $tag['name'] . '</span>';
                         echo '<input hidden name="id" value="' . $todo['id'] . '" />';
                         echo '<input hidden name="tagId" value="' . $tag['id'] . '" />';
@@ -73,7 +73,7 @@
                     echo '<br>';
                 }
             }
-            echo '<form method="post" action="add">';
+            echo '<form method="post" action="todos/add">';
             echo '<input class="todo" type="text" name="todo" />';
             echo '</form>';
         ?>
@@ -92,13 +92,13 @@
             if (e.key === 'Enter') {
                 e.target.blur()
             } else if (e.key === 'Backspace' && e.target.value === '') {
-                e.target.parentElement.action = 'delete'
+                e.target.parentElement.action = 'todos/delete'
                 e.target.parentElement.submit()
             }
         })
         todo.addEventListener('click', e => {
             if (e.shiftKey && e.target.value !== '') {
-                e.target.parentElement.action = 'edit/done'
+                e.target.parentElement.action = 'todos/edit/done'
                 e.target.parentElement.submit()
             }
         })
