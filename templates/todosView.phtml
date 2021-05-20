@@ -1,43 +1,51 @@
-<!DOCTYPE html>
-<html>
+<?php
+
+    $todoListHTML = '';
+
+    if ($todos) {
+        foreach ($todos as $todo) {
+            $todoListHTML .= '<div>';
+            $todoListHTML .= '<form method="post" action="todos/edit">';
+            $todoListHTML .= '<input class="todo' . ($todo['done'] == 1 ? ' done' : '') .'" name="todo" type="text" value="' . $todo['todo'] . '" data-current-value="' . $todo['todo'] . '" />';
+            $todoListHTML .= '<input hidden name="id" value="' . $todo['id'] . '" />';
+            $todoListHTML .= '<input hidden name="done" value="' . ($todo['done'] == 1 ? '0' : '1') . '" />';
+            $todoListHTML .= '</form>';
+            foreach ($tags as $tag) {
+                $active = false;
+                foreach (explode(',', $todo['tags']) as $activeTagId) {
+                    if ($tag['id'] == $activeTagId) {
+                        $active = true;
+                        break;
+                    }
+                }
+                $todoListHTML .= '<form action="todos/edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
+                $todoListHTML .= '<span class="' . ($active ? 'active' : '') . '">' . $tag['name'] . '</span>';
+                $todoListHTML .= '<input hidden name="id" value="' . $todo['id'] . '" />';
+                $todoListHTML .= '<input hidden name="tagId" value="' . $tag['id'] . '" />';
+                $todoListHTML .= '</form>';
+            }
+            $todoListHTML .= '</div>';
+        }
+    }
+    $todoListHTML .= '<div>';
+    $todoListHTML .= '<form method="post" action="todos/add">';
+    $todoListHTML .= '<input class="todo" type="text" name="todo" />';
+    $todoListHTML .= '</form>';
+    $todoListHTML .= '</div>';
+
+?>
+<html lang="en-GB">
     <head>
         <link href="styles.css" rel="stylesheet" type="text/css" />
         <script src="index.js" defer></script>
     </head>
     <body>
-        <form method="post" action="tags/add">
-            <input class="newtag" type="text" name="tag" placeholder="New Tag" />
-            <button>Add New Tag</button>
-        </form>
-        <br>
-        <?php
-            if ($todos) {
-                foreach ($todos as $todo) {
-                    echo '<form method="post" action="todos/edit">';
-                    echo '<input class="todo' . ($todo['done'] == 1 ? ' done' : '') .'" name="todo" type="text" value="' . $todo['todo'] . '" data-current-value="' . $todo['todo'] . '" />';
-                    echo '<input hidden name="id" value="' . $todo['id'] . '" />';
-                    echo '<input hidden name="done" value="' . ($todo['done'] == 1 ? '0' : '1') . '" />';
-                    echo '</form>';
-                    foreach ($tags as $tag) {
-                        $active = false;
-                        foreach (explode(',', $todo['tags']) as $activeTagId) {
-                            if ($tag['id'] == $activeTagId) {
-                                $active = true;
-                                break;
-                            }
-                        }
-                        echo '<form action="todos/edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
-                        echo '<span class="' . ($active ? 'active' : '') . '">' . $tag['name'] . '</span>';
-                        echo '<input hidden name="id" value="' . $todo['id'] . '" />';
-                        echo '<input hidden name="tagId" value="' . $tag['id'] . '" />';
-                        echo '</form>';
-                    }
-                    echo '<br>';
-                }
-            }
-            echo '<form method="post" action="todos/add">';
-            echo '<input class="todo" type="text" name="todo" />';
-            echo '</form>';
-        ?>
+        <div>
+            <form method="post" action="tags/add">
+                <input class="newtag" type="text" name="tag" placeholder="New Tag" />
+                <button>Add New Tag</button>
+            </form>
+        </div>
+        <?= $todoListHTML; ?>
     </body>
 </html>
