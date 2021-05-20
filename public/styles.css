@@ -14,16 +14,6 @@ input:focus {
     border-bottom: darkred solid 2px;
 }
 
-input.newtag {
-    border-bottom: goldenrod solid 2px;
-    margin-bottom: 30px;
-}
-
-button {
-    border: goldenrod solid 2px;
-    background-color: transparent;
-}
-
 span {
     color: gray;
     margin: 0 5px;

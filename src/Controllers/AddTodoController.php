@@ -21,6 +21,6 @@ class AddTodoController {
             $this->todosModel->addTodo($post['todo']);
         }
 
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/todos');
     }
 }

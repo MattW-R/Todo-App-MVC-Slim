@@ -21,6 +21,6 @@ class TodoRemoveTagController {
             $this->todosModel->removeTag($post['id'], $post['tagId']);
         }
 
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/todos');
     }
 }

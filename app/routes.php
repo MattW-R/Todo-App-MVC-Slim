@@ -15,5 +15,6 @@ return function (App $app) {
     $app->post('/todos/edit/addtag', 'TodoAddTagController');
     $app->post('/todos/edit/removetag', 'TodoRemoveTagController');
     $app->post('/todos/delete', 'DeleteTodoController');
+    $app->get('/tags', 'ViewAllTagsController');
     $app->post('/tags/add', 'AddTagController');
 };

@@ -21,6 +21,6 @@ class TodoAddTagController {
             $this->todosModel->addTag($post['id'], $post['tagId']);
         }
 
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/todos');
     }
 }

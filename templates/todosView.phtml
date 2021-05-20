@@ -37,15 +37,9 @@
 <html lang="en-GB">
     <head>
         <link href="styles.css" rel="stylesheet" type="text/css" />
-        <script src="index.js" defer></script>
+        <script src="todosView.js" defer></script>
     </head>
     <body>
-        <div>
-            <form method="post" action="tags/add">
-                <input class="newtag" type="text" name="tag" placeholder="New Tag" />
-                <button>Add New Tag</button>
-            </form>
-        </div>
         <?= $todoListHTML; ?>
     </body>
 </html>

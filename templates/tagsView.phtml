@@ -1,0 +1,31 @@
+<?php
+
+    $tagListHTML = '';
+    if ($tags) {
+        foreach ($tags as $tag) {
+            $tagListHTML  .= '<div>';
+            $tagListHTML  .= '<form method="post" action="tags/edit">';
+            $tagListHTML  .= '<input class="todo" name="tag" type="text" value="' . $tag['name'] . '" data-current-value="' . $tag['name'] . '" />';
+            $tagListHTML  .= '<input hidden name="id" value="' . $tag['id'] . '" />';
+            $tagListHTML  .= '</form>';
+            $tagListHTML  .= '</div>';
+        }
+    }
+    $tagListHTML  .= '<div>';
+    $tagListHTML  .= '<form method="post" action="tags/add">';
+    $tagListHTML  .= '<input class="todo" type="text" name="tag" />';
+    $tagListHTML  .= '</form>';
+    $tagListHTML  .= '</div>';
+
+?>
+
+<html lang="en-GB">
+    <head>
+        <link href="styles.css" rel="stylesheet" type="text/css" />
+        <link href="tagsView.css" rel="stylesheet" type="text/css" />
+        <script src="tagsView.js" defer></script>
+    </head>
+    <body>
+        <?= $tagListHTML; ?>
+    </body>
+</html>

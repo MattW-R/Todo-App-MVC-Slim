@@ -21,6 +21,6 @@ class EditTodoController {
             $this->todosModel->editTodo($post['todo'], $post['id']);
         }
 
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/todos');
     }
 }

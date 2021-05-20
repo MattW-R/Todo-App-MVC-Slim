@@ -21,6 +21,6 @@ class DeleteTodoController {
             $this->todosModel->deleteTodo($post['id']);
         }
 
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/todos');
     }
 }
