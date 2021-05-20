@@ -5,7 +5,7 @@
         foreach ($tags as $tag) {
             $tagListHTML  .= '<div>';
             $tagListHTML  .= '<form method="post" action="tags/edit">';
-            $tagListHTML  .= '<input class="todo" name="tag" type="text" value="' . $tag['name'] . '" data-current-value="' . $tag['name'] . '" />';
+            $tagListHTML  .= '<input class="todo" name="name" type="text" value="' . $tag['name'] . '" data-current-value="' . $tag['name'] . '" />';
             $tagListHTML  .= '<input hidden name="id" value="' . $tag['id'] . '" />';
             $tagListHTML  .= '</form>';
             $tagListHTML  .= '</div>';

@@ -21,4 +21,11 @@ class TagsModel {
         $query->bindParam(':Tag', $tag);
         $query->execute();
     }
+
+    public function editTag(string $name, string $id): void {
+        $query = $this->db->prepare("UPDATE `tags` SET `name` = :Name WHERE `id` = :Id;");
+        $query->bindParam(':Name', $name);
+        $query->bindParam(':Id', $id);
+        $query->execute();
+    }
 }

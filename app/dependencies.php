@@ -49,6 +49,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteTodoController'] = DI\factory('App\Factories\DeleteTodoControllerFactory');
     $container['ViewAllTagsController'] = DI\factory('App\Factories\ViewAllTagsControllerFactory');
     $container['AddTagController'] = DI\factory('App\Factories\AddTagControllerFactory');
+    $container['EditTagController'] = DI\factory('App\Factories\EditTagControllerFactory');
 
     $containerBuilder->addDefinitions($container);
 };
