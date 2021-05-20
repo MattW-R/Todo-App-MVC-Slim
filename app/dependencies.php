@@ -40,5 +40,14 @@ return function (ContainerBuilder $containerBuilder) {
     $container['TodosModel'] = DI\factory('App\Factories\TodosModelFactory');
     $container['TagsModel'] = DI\factory('App\Factories\TagsModelFactory');
 
+    $container['ViewAllTodosController'] = DI\factory('App\Factories\ViewAllTodosControllerFactory');
+    $container['AddTodoController'] = DI\factory('App\Factories\AddTodoControllerFactory');
+    $container['EditTodoController'] = DI\factory('App\Factories\EditTodoControllerFactory');
+    $container['EditDoneTodoController'] = DI\factory('App\Factories\EditDoneTodoControllerFactory');
+    $container['TodoAddTagController'] = DI\factory('App\Factories\TodoAddTagControllerFactory');
+    $container['TodoRemoveTagController'] = DI\factory('App\Factories\TodoRemoveTagControllerFactory');
+    $container['DeleteTodoController'] = DI\factory('App\Factories\DeleteTodoControllerFactory');
+    $container['AddTagController'] = DI\factory('App\Factories\AddTagControllerFactory');
+
     $containerBuilder->addDefinitions($container);
 };
