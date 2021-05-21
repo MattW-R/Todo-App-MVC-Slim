@@ -24,7 +24,17 @@ todos.forEach(todo => {
 
 document.querySelectorAll('span').forEach(span => {
     span.addEventListener('click', e => {
-        e.target.parentElement.submit()
+        if (e.shiftKey) {
+            if (window.location.href.match(/\?/)) {
+                if (!window.location.href.match(e.target.textContent)) {
+                    window.location.replace(window.location.href + '+' + e.target.textContent)
+                }
+            } else {
+                window.location.replace(window.location.href + '?tags=' + e.target.textContent)
+            }
+        } else {
+            e.target.parentElement.submit()
+        }
     })
 })
 

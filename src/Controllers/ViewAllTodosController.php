@@ -23,6 +23,7 @@ class ViewAllTodosController {
         $get = $request->getQueryParams();
         $filterTags = explode(' ', $get['tags']);
         $filterTags = filter_var_array($filterTags, FILTER_SANITIZE_STRING);
+        $filterTags = array_unique($filterTags);
         $filterTags = array_filter($filterTags, function ($filterTag) {
             return $filterTag !== '';
         });
