@@ -13,6 +13,7 @@ body {
 
 main {
     padding-top: 45px;
+    margin: 0 5px;
 }
 
 nav {
@@ -37,18 +38,29 @@ nav a:visited, nav a:link {
 
 .line {
     border-bottom: slategray dashed 2px;
-    cursor: text;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 8px;
 }
 
 .line:focus-within {
     border-bottom: darkred dashed 2px;
 }
 
+form {
+    margin: 0;
+}
+
+form:nth-child(1) {
+    width: 100%;
+}
+
 input {
     border: none;
     font-size: 24px;
     background-color: transparent;
-    width: 400px;
+    width: 100%;
     margin-left: 10px;
 }
 
