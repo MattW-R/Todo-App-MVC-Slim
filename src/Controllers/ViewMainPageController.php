@@ -14,6 +14,7 @@ class ViewMainPageController {
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response {
+        $args['request'] = $request;
         return $this->renderer->render($response, "mainView.phtml", $args);
     }
 }

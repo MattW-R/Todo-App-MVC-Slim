@@ -30,6 +30,7 @@ class ViewAllTodosController {
         $args['filterTags'] = $get['tags'];
         $args['todos'] = $this->todosModel->getAllTodos($filterTags);
         $args['tags'] = $this->tagsModel->getAllTags();
+        $args['request'] = $request;
         return $this->renderer->render($response, "todosView.phtml", $args);
     }
 }

@@ -18,6 +18,7 @@ class ViewAllTagsController {
 
     public function __invoke(Request $request, Response $response, array $args): Response {
         $args['tags'] = $this->tagsModel->getAllTags();
+        $args['request'] = $request;
         return $this->renderer->render($response, "tagsView.phtml", $args);
     }
 }

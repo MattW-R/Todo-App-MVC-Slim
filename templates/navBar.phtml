@@ -1,5 +1,7 @@
-<nav>
-    <a href="/">Home</a>
-    <a href="/todos">Todos</a>
-    <a href="/tags">Tags</a>
-</nav>
+<?php
+
+echo '<nav>
+    <a href="/"' . ($request->getUri()->getPath() === '/' ? 'class="active"' : '') . '>Home</a>
+    <a href="/todos"' . ($request->getUri()->getPath() === '/todos' ? 'class="active"' : '') . '>Todos</a>
+    <a href="/tags"' . ($request->getUri()->getPath() === '/tags' ? 'class="active"' : '') . '>Tags</a>
+</nav>';

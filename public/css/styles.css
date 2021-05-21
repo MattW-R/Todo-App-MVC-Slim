@@ -36,6 +36,10 @@ nav a:visited, nav a:link {
     color: darkred;
 }
 
+nav a.active {
+    text-decoration: underline;
+}
+
 .line {
     border-bottom: slategray dashed 2px;
     display: flex;
