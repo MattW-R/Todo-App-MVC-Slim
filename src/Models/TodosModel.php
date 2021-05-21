@@ -9,9 +9,20 @@ class TodosModel {
         $this->db = $db;
     }
 
-    public function getAllTodos(): array {
+    public function getAllTodos(array $filterTags = []): array {
+        $queryString = "SELECT `todos`.`id`, `todos`.`todo`, `todos`.`done`, GROUP_CONCAT(`tags`.`id` SEPARATOR ',') AS 'tags', GROUP_CONCAT(`tags`.`name` SEPARATOR ',') AS 'tagNames' FROM `todos` LEFT JOIN `todos-tags` ON `todos`.`id` = `todos-tags`.`todo-id` LEFT JOIN `tags` ON `todos-tags`.`tag-id` = `tags`.`id` WHERE `todos`.`deleted` = 0 GROUP BY `todos`.`id`";
+        if (count($filterTags) > 0) {
+            $queryString .= " HAVING `tagNames` LIKE CONCAT('%', :" . $filterTags[0] . ", '%')";
+            for ($i = 1; $i < count($filterTags); $i++) {
+                $queryString .= " AND `tagNames` LIKE CONCAT('%', :" . $filterTags[$i] . ", '%')";
+            }
+        }
+        $queryString .= ";";
         $this->db->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-        $query = $this->db->prepare("SELECT `todos`.`id`, `todos`.`todo`, `todos`.`done`, GROUP_CONCAT(`tags`.`id` SEPARATOR ',') AS 'tags' FROM `todos` LEFT JOIN `todos-tags` ON `todos`.`id` = `todos-tags`.`todo-id` LEFT JOIN `tags` ON `todos-tags`.`tag-id` = `tags`.`id` WHERE `todos`.`deleted` = 0 GROUP BY `todos`.`id`;");
+        $query = $this->db->prepare($queryString);
+        foreach ($filterTags as $filterTag) {
+            $query->bindValue(':' . $filterTag, $filterTag);
+        }
         $query->execute();
         return $query->fetchAll();
     }

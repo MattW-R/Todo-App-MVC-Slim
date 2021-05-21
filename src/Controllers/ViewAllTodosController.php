@@ -20,8 +20,11 @@ class ViewAllTodosController {
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response {
-            $args['todos'] = $this->todosModel->getAllTodos();
-            $args['tags'] = $this->tagsModel->getAllTags();
-            return $this->renderer->render($response, "todosView.phtml", $args);
+        $get = $request->getQueryParams();
+        $filterTags = explode(' ', $get['tags']);
+        $filterTags = filter_var_array($filterTags, FILTER_SANITIZE_STRING);
+        $args['todos'] = $this->todosModel->getAllTodos($filterTags);
+        $args['tags'] = $this->tagsModel->getAllTags();
+        return $this->renderer->render($response, "todosView.phtml", $args);
     }
 }
