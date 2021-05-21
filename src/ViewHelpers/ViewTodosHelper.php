@@ -22,7 +22,7 @@ class ViewTodosHelper {
                         }
                     }
                     $todoListHTML .= '<form action="todos/edit/' . ($active ? 'removetag' : 'addtag') . '" method="post">';
-                    $todoListHTML .= '<span class="' . ($active ? 'active' : '') . (preg_match("/{$tag['name']}/", $filterTags) ? ' filtered' : '') . '">' . $tag['name'] . '</span>';
+                    $todoListHTML .= '<span class="tag-button' . ($active ? ' active' : '') . (preg_match("/{$tag['name']}/", $filterTags) ? ' filtered' : '') . '">' . $tag['name'] . '</span>';
                     $todoListHTML .= '<input hidden name="id" value="' . $todo['id'] . '" />';
                     $todoListHTML .= '<input hidden name="tagId" value="' . $tag['id'] . '" />';
                     $todoListHTML .= '</form>';

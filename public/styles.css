@@ -24,17 +24,17 @@ input:focus {
     border-bottom: darkred solid 2px;
 }
 
-span {
+.tag-button {
     color: gray;
     margin: 0 5px;
     cursor: pointer;
 }
 
-span.active {
+.tag-button.active {
     color: darkcyan;
 }
 
-span.filtered {
+.tag-button.filtered {
     color: darkred;
 }
 

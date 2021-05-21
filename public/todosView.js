@@ -26,7 +26,7 @@ todos.forEach(todo => {
     })
 })
 
-document.querySelectorAll('span').forEach(span => {
+document.querySelectorAll('.tag-button').forEach(span => {
     span.addEventListener('click', e => {
         if (e.shiftKey) {
             if (!window.location.href.match(/\?/)) {
