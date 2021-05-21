@@ -7,7 +7,7 @@ class ViewTagsHelper {
         $tagListHTML = '';
         if ($tags) {
             foreach ($tags as $tag) {
-                $tagListHTML  .= '<div>';
+                $tagListHTML  .= '<div class="line">';
                 $tagListHTML  .= '<form method="post" action="tags/edit">';
                 $tagListHTML  .= '<input class="todo" name="name" type="text" value="' . $tag['name'] . '" data-current-value="' . $tag['name'] . '" />';
                 $tagListHTML  .= '<input hidden name="id" value="' . $tag['id'] . '" />';
@@ -19,7 +19,7 @@ class ViewTagsHelper {
     }
 
     public static function displayNewTag(): string {
-        $tagListHTML  = '<div>';
+        $tagListHTML  = '<div class="line">';
         $tagListHTML  .= '<form method="post" action="tags/add">';
         $tagListHTML  .= '<input class="todo" type="text" name="tag" />';
         $tagListHTML  .= '</form>';

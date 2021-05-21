@@ -1,23 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: lightsalmon;
+}
+
 body {
     background-color: wheat;
+    margin: 0 auto;
 }
 
-a {
+main {
+    padding-top: 45px;
+}
+
+nav {
+    border-bottom: darkred solid 2px;
+    position: fixed;
+    width: 100%;
+    background-color: wheat;
+    z-index: 1;
+}
+
+nav a {
     color: darkred;
     font-size: 26px;
-    margin: 0 10px 20px;
+    margin: 5px 10px 5px;
     display: inline-block;
     text-decoration: none;
-    border-bottom: darkred dashed 2px;
 }
 
-a:visited, a:link {
+nav a:visited, nav a:link {
     color: darkred;
+}
+
+.line {
+    border-bottom: slategray dashed 2px;
+}
+
+.line:focus-within {
+    border-bottom: darkred dashed 2px;
 }
 
 input {
     border: none;
-    border-bottom: darkcyan dashed 2px;
     font-size: 24px;
     background-color: transparent;
     width: 400px;
@@ -31,7 +58,6 @@ input.done {
 
 input:focus {
     outline: none;
-    border-bottom: darkred dashed 2px;
 }
 
 .tag-button {

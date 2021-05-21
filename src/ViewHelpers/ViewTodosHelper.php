@@ -7,7 +7,7 @@ class ViewTodosHelper {
         $todoListHTML = '';
         if ($todos) {
             foreach ($todos as $todo) {
-                $todoListHTML .= '<div>';
+                $todoListHTML .= '<div class="line">';
                 $todoListHTML .= '<form method="post" action="todos/edit">';
                 $todoListHTML .= '<input class="todo' . ($todo['done'] == 1 ? ' done' : '') .'" name="todo" type="text" value="' . $todo['todo'] . '" data-current-value="' . $todo['todo'] . '" />';
                 $todoListHTML .= '<input hidden name="id" value="' . $todo['id'] . '" />';
@@ -34,7 +34,7 @@ class ViewTodosHelper {
     }
 
     public static function displayNewTodo(): string {
-        $todoListHTML = '<div>';
+        $todoListHTML = '<div class="line">';
         $todoListHTML .= '<form method="post" action="todos/add">';
         $todoListHTML .= '<input class="todo" type="text" name="todo" />';
         $todoListHTML .= '</form>';

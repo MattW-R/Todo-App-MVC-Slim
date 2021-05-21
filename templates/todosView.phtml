@@ -10,8 +10,9 @@
         <script src="js/todosView.js" defer></script>
     </head>
     <body>
-        <a href="/">Back</a>
-        <a href="/todos">Remove Filters</a>
-        <?= $todoListHTML; ?>
+        <?php include_once 'navBar.phtml'; ?>
+        <main>
+            <?= $todoListHTML; ?>
+        </main>
     </body>
 </html>

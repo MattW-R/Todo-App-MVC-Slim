@@ -12,7 +12,9 @@
         <script src="js/tagsView.js" defer></script>
     </head>
     <body>
-        <a href="/">Back</a>
-        <?= $tagListHTML; ?>
+        <?php include_once 'navBar.phtml'; ?>
+        <main>
+            <?= $tagListHTML; ?>
+        </main>
     </body>
 </html>
