@@ -27,6 +27,7 @@ input:focus {
 span {
     color: gray;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 span.active {
