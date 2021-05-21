@@ -34,5 +34,3 @@ document.querySelectorAll('.tag-button').forEach(span => {
         }
     })
 })
-
-todos[todos.length - 1].focus()

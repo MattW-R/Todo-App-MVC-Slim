@@ -8,5 +8,3 @@ tags.forEach(tag => {
         }
     })
 })
-
-tags[tags.length - 1].focus()
