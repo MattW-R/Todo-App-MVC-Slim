@@ -1,4 +1,4 @@
-Create a new MySQL database & name it 'todos'.
+Create a new MySQL database & name it 'todos', set the username used to access it to 'root' & password to 'password'.
 
 Import todos.sql into the database.
 
