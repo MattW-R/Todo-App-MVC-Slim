@@ -23,6 +23,11 @@ class ViewAllTodosController {
         $get = $request->getQueryParams();
         $filterTags = explode(' ', $get['tags']);
         $filterTags = filter_var_array($filterTags, FILTER_SANITIZE_STRING);
+        for ($i = 0; $i < count($filterTags); $i++) {
+            if ($filterTags[$i] === '') {
+                unset($filterTags[$i]);
+            }
+        }
         $args['todos'] = $this->todosModel->getAllTodos($filterTags);
         $args['tags'] = $this->tagsModel->getAllTags();
         return $this->renderer->render($response, "todosView.phtml", $args);
