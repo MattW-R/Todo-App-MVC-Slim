@@ -7,11 +7,15 @@ tags.forEach(tag => {
         }
     })
     tag.addEventListener('keyup', e => {
-        if (e.key === 'Enter') {
-            e.target.blur()
-        } else if (e.key === 'Backspace' && e.target.value === '') {
+        if (e.key === 'Backspace' && e.target.value === '') {
             e.target.parentElement.action = 'tags/delete'
             e.target.parentElement.submit()
+        }
+    })
+    tag.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            e.target.blur()
         }
     })
 })

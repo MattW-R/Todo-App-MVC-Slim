@@ -7,11 +7,15 @@ todos.forEach(todo => {
         }
     })
     todo.addEventListener('keyup', e => {
-        if (e.key === 'Enter') {
-            e.target.blur()
-        } else if (e.key === 'Backspace' && e.target.value === '') {
+        if (e.key === 'Backspace' && e.target.value === '') {
             e.target.parentElement.action = 'todos/delete'
             e.target.parentElement.submit()
+        }
+    })
+    todo.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            e.target.blur()
         }
     })
     todo.addEventListener('click', e => {
