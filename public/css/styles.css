@@ -83,6 +83,7 @@ input:focus {
     color: slategray;
     margin: 0 5px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .tag-button.active {
