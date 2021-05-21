@@ -29,8 +29,6 @@ document.querySelectorAll('span').forEach(span => {
                 window.location.replace(window.location.href + '?tags=' + e.target.textContent)
             } else if (!window.location.href.match(e.target.textContent)) {
                 window.location.replace(window.location.href + '+' + e.target.textContent)
-            } else {
-                window.location.replace('/todos')
             }
         } else {
             e.target.parentElement.submit()
