@@ -27,6 +27,7 @@ class ViewAllTodosController {
         $filterTags = array_filter($filterTags, function ($filterTag) {
             return $filterTag !== '';
         });
+        $args['filterTags'] = $get['tags'];
         $args['todos'] = $this->todosModel->getAllTodos($filterTags);
         $args['tags'] = $this->tagsModel->getAllTags();
         return $this->renderer->render($response, "todosView.phtml", $args);
