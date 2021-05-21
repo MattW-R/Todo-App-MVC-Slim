@@ -7,5 +7,5 @@ main {
 
 li {
     font-size: 22px;
-
+    list-style-type: circle;
 }
